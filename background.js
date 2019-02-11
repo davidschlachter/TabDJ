@@ -56,8 +56,10 @@ browser.extension.onConnect.addListener(function(port)
 			}
 			else
 			{
-				tabs[curTab].panNode.pan.setValueAtTime(tabs[curTab].panning, tabs[curTab].context.currentTime);
-                tabs[curTab].gainNode.gain.setValueAtTime(tabs[curTab].volume, tabs[curTab].context.currentTime);
+                if (typeof tabs[curTab].panNode !== "undefined" && typeof tabs[curTab].panNode.pan !== "undefined" && typeof tabs[curTab].gainNode !== "undefined" && typeof tabs[curTab].gainNode.gain !== "undefined") {
+    				tabs[curTab].panNode.pan.setValueAtTime(tabs[curTab].panning, tabs[curTab].context.currentTime);
+                    tabs[curTab].gainNode.gain.setValueAtTime(tabs[curTab].volume, tabs[curTab].context.currentTime);
+                }
 			}
 		}
 		else if (msg.type == 'update_request')

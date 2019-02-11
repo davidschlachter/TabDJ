@@ -92,8 +92,8 @@ function localizeHtmlPage()
     }
 }
 
+localizeHtmlPage();
 document.getElementById('TabDJExtensionPanInput').addEventListener("input", setvalue);
 document.getElementById('TabDJExtensionVolumeInput').addEventListener("input", setvalue);
 
-localizeHtmlPage();
 update();
