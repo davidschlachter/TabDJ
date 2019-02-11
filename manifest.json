@@ -6,7 +6,7 @@
 	"permissions": ["tabCapture", "activeTab", "tabs"],
     "background": {
         "scripts": [
-            "browser-polyfill/browser-polyfill.js",
+            "browser-polyfill/browser-polyfill.min.js",
             "background.js"
         ],
         "persistent": true
