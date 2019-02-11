@@ -1,0 +1,30 @@
+{
+  "appName": {
+    "message": "Tab DJ",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Équilibrage gauche-droite (balance) et volume pour chaque onglet. Un application simple pour DJ à partir des sources web.",
+    "description":"The description of the application, displayed in the web store."
+  },
+  "balance": {
+    "message": "Équilibrage G-D",
+    "description":"Caption for the L-R balance"
+  },
+  "left": {
+    "message": "Gauche",
+    "description":"Caption for the left channel"
+  },
+  "right": {
+    "message": "Droite",
+    "description":"Caption for the right channel"
+  },
+  "center": {
+    "message": "Centre",
+    "description":"Caption for the center channel"
+  },
+  "volume": {
+    "message": "Volume",
+    "description":"Caption for the volume"
+  }
+}

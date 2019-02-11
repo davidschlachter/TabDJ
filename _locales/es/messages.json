@@ -1,0 +1,30 @@
+{
+  "appName": {
+    "message": "Tab DJ",
+    "description": "The title of the application, displayed in the web store."
+  },
+  "appDesc": {
+    "message": "Control del equilibrio derecho/izquierdo y del volumen de cada pestaña. Una application simple para DJ con el navegador.", 
+    "description":"The description of the application, displayed in the web store."
+  },
+  "balance": {
+    "message": "Equilibrio I-D",
+    "description":"Caption for the L-R balance"
+  },
+  "left": {
+    "message": "Izquierdo",
+    "description":"Caption for the left channel"
+  },
+  "right": {
+    "message": "Derecho",
+    "description":"Caption for the right channel"
+  },
+  "center": {
+    "message": "Centro",
+    "description":"Caption for the center channel"
+  },
+  "volume": {
+    "message": "Volumen",
+    "description":"Caption for the volume"
+  }
+}
