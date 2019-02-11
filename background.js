@@ -1,6 +1,6 @@
 var tabs = {};
 
-chrome.extension.onConnect.addListener(function(port)
+browser.extension.onConnect.addListener(function(port)
 {
 	port.onMessage.addListener(function(msg)
 	{
@@ -32,7 +32,7 @@ chrome.extension.onConnect.addListener(function(port)
 			
 			if (tabs[curTab].enabled == 0)
 			{
-				chrome.tabCapture.capture(
+				browser.tabCapture.capture(
 				{
 					audio: true,
 					video: false
@@ -71,7 +71,7 @@ chrome.extension.onConnect.addListener(function(port)
 	});
 });
 
-chrome.tabs.onRemoved.addListener(function(tabid, removed) {
+browser.tabs.onRemoved.addListener(function(tabid, removed) {
 	if (tabs[tabid])
 	{
 		delete tabs[tabid];

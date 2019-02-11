@@ -1,15 +1,18 @@
 {
-    "name": "TabDJ",
+    "name": "Tab DJ",
     "version": "0.1",
-    "short_name": "TabDJ",
+    "short_name": "Tab DJ",
     "description": "Per-tab stereo audio panning (balance) and volume. Simple DJ app, send one channel to speakers while previewing on another.",
 	"permissions": ["tabCapture", "activeTab", "tabs"],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": [
+            "browser-polyfill/browser-polyfill.js",
+            "background.js"
+        ],
         "persistent": true
     },
     "browser_action": {
-		"default_title": "TabDJ",
+		"default_title": "Tab DJ",
         "default_icon": "icon.png",
 		"default_popup": "popup.html"
     },

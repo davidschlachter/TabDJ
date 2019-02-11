@@ -1,10 +1,10 @@
-var port = chrome.extension.connect({
-	name: 'Audio Pan'
+var port = browser.extension.connect({
+	name: 'Tab DJ'
 });
 
 function currenttabcallback(callback)
 {
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	browser.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		var currTab = tabs[0];
 		
 		if (currTab) {
@@ -15,7 +15,7 @@ function currenttabcallback(callback)
 
 function setvalue()
 {
-	var newval = document.getElementById('AudioPanExtensionPanInput').value;
+	var newval = document.getElementById('TabDJExtensionPanInput').value;
 	newval = (newval / 4);
 	
 	currenttabcallback(function(tabid)
@@ -56,12 +56,12 @@ port.onMessage.addListener(function(msg)
 			if (msg.type == "update_response")
 			{
 				var newval = (msg.value * 5)
-				document.getElementById('AudioPanExtensionPanInput').value = newval;
+				document.getElementById('TabDJExtensionPanInput').value = newval;
 			}
 		}
 	});
 });
 
-document.getElementById('AudioPanExtensionPanInput').addEventListener("input", setvalue);
+document.getElementById('TabDJExtensionPanInput').addEventListener("input", setvalue);
 
 update();
