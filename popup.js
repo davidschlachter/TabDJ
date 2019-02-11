@@ -15,14 +15,17 @@ function currenttabcallback(callback)
 
 function setvalue()
 {
-	var newval = document.getElementById('TabDJExtensionPanInput').value;
-	newval = (newval / 4);
+	var panvalue = document.getElementById('TabDJExtensionPanInput').value;
+    var gainvalue = document.getElementById('TabDJExtensionVolumeInput').value;
 	
 	currenttabcallback(function(tabid)
 	{
 		var msgdata = {
 			'type': 'set_request',
-			'value': newval,
+			'value': [
+                panvalue,
+                gainvalue
+            ],
 			'tabid': tabid
 		};
 		
@@ -36,7 +39,10 @@ function update()
 	{
 		var msgdata = {
 			'type': 'update_request',
-			'value': 0,
+			'value': [
+                0,
+                1
+            ],
 			'tabid': tabid
 		};
 		
@@ -55,13 +61,16 @@ port.onMessage.addListener(function(msg)
 		{
 			if (msg.type == "update_response")
 			{
-				var newval = (msg.value * 5)
-				document.getElementById('TabDJExtensionPanInput').value = newval;
+				var panvalue = msg.value[0];
+                var gainvalue = msg.value[1];
+				document.getElementById('TabDJExtensionPanInput').value = panvalue;
+                document.getElementById('TabDJExtensionVolumeInput').value = gainvalue;
 			}
 		}
 	});
 });
 
 document.getElementById('TabDJExtensionPanInput').addEventListener("input", setvalue);
+document.getElementById('TabDJExtensionVolumeInput').addEventListener("input", setvalue);
 
 update();

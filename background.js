@@ -20,6 +20,7 @@ browser.extension.onConnect.addListener(function(port)
 		{
 			tabs[curTab] = {};
 			tabs[curTab].panning = 0;
+            tabs[curTab].volume = 1;
 			tabs[curTab].enabled = 0;
 			tabs[curTab].panNode;
 			tabs[curTab].context;
@@ -28,7 +29,8 @@ browser.extension.onConnect.addListener(function(port)
 		
 		if (msg.type == 'set_request')
 		{
-			tabs[curTab].panning = msg.value;
+			tabs[curTab].panning = msg.value[0];
+            tabs[curTab].volume = msg.value[1];            
 			
 			if (tabs[curTab].enabled == 0)
 			{
@@ -41,10 +43,13 @@ browser.extension.onConnect.addListener(function(port)
 					tabs[curTab].context = new AudioContext();
 					tabs[curTab].source = tabs[curTab].context.createMediaStreamSource(stream);
 					
+                    tabs[curTab].gainNode = tabs[curTab].context.createGain();
+                    tabs[curTab].gainNode.gain.setValueAtTime(tabs[curTab].volume, tabs[curTab].context.currentTime);
+                    
 					tabs[curTab].panNode = tabs[curTab].context.createStereoPanner();
 					tabs[curTab].panNode.pan.setValueAtTime(tabs[curTab].panning, tabs[curTab].context.currentTime);
 					
-					tabs[curTab].source.connect(tabs[curTab].panNode).connect(tabs[curTab].context.destination);
+					tabs[curTab].source.connect(tabs[curTab].gainNode).connect(tabs[curTab].panNode).connect(tabs[curTab].context.destination);
 				});
 				
 				tabs[curTab].enabled = 1;
@@ -52,13 +57,17 @@ browser.extension.onConnect.addListener(function(port)
 			else
 			{
 				tabs[curTab].panNode.pan.setValueAtTime(tabs[curTab].panning, tabs[curTab].context.currentTime);
+                tabs[curTab].gainNode.gain.setValueAtTime(tabs[curTab].volume, tabs[curTab].context.currentTime);
 			}
 		}
 		else if (msg.type == 'update_request')
 		{
 			var msgdata = {
 				'type':'update_response',
-				'value': tabs[curTab].panning,
+				'value': [
+                    tabs[curTab].panning,
+                    tabs[curTab].volume
+                ],
 				'tabid': curTab
 			};
 			

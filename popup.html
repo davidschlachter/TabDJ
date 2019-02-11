@@ -1,21 +1,29 @@
-<html >
+<html>
     <body>
-		<h2 style="margin-bottom:0px;">TabDJ</h2>
+		<h2 style="margin-bottom:0px;">Tab DJ</h2>
 		<hr>
+		<h3>L-R Balance</h3>
 		<div>
 			<p style="float:left;width:33.3333%;text-align:left;">Left</p>
 			<p style="float:left;width:33.3333%;text-align:center;">Center</p>
 			<p style="float:left;width:33.3333%;text-align:right;">Right</p>
 		</div>
 		<div style="clear: both;"></div>
-		<input type="range" id="TabDJExtensionPanInput" min="-4" value="0" max="4" step="1" list="input01">
+		<input type="range" id="TabDJExtensionPanInput" min="-1" value="0" max="1" step="0.1" list="input01">
 		<datalist id="input01">
-			<option>-4</option>
-			<option>-2</option>
+			<option>-1</option>
+			<option>-0.5</option>
 			<option>0</option>
-			<option>2</option>
-			<option>4</option>
+			<option>0.5</option>
+			<option>1</option>
 		</datalist>
+		<h3>Volume</h3>
+		<div>
+			<p style="float:left;width:33.3333%;text-align:left;">0</p>
+			<p style="float:left;width:33.3333%;text-align:center;">50%</p>
+			<p style="float:left;width:33.3333%;text-align:right;">100%</p>
+		</div>
+		<input type="range" id="TabDJExtensionVolumeInput" min="0" max="1" step="0.1" value="1">
 		<script type="application/javascript" src="browser-polyfill/browser-polyfill.js"></script>
 		<script type="application/javascript" src="popup.js"></script>
 	</body>
