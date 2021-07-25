@@ -4,7 +4,7 @@
     "short_name": "Tab DJ",
     "description": "__MSG_appDesc__",
     "default_locale": "en",
-	"permissions": ["tabCapture", "activeTab", "tabs"],
+	"permissions": ["tabCapture", "activeTab"],
     "background": {
         "scripts": [
             "browser-polyfill/browser-polyfill.min.js",
